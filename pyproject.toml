@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sinkdeflation"
+version = "0.1.0"
+description = "Sink-aware calibration statistics for activation-whitened SVD compression of language models"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Jeffrey R. Gordon", email = "jeffreyrgordon@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = ["torch>=2.1"]
+
+[project.optional-dependencies]
+hf = ["transformers>=4.40", "datasets>=2.18"]
+test = ["pytest>=7"]
+
+[project.scripts]
+sinkdeflation = "sinkdeflation.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sinkdeflation*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
